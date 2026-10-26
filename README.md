@@ -69,4 +69,7 @@ The debug APK is written to `app/build/outputs/apk/debug/`.
 
 ## License
 
-[MIT](LICENSE)
+Copyright (C) 2026 Mark Voronin
+
+Licensed under the [GNU General Public License v3.0](LICENSE). You're free to use, modify and
+redistribute this app, but derivative works must be released under the same license.
