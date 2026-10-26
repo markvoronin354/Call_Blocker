@@ -20,7 +20,7 @@ class VerifiedCallScreeningService : CallScreeningService() {
 
         val settings = ScreenerSettings(this)
         val status = callDetails.callerNumberVerificationStatus
-        val allowed = settings.allowVerified && status == Connection.VERIFICATION_STATUS_PASSED
+        val allowed = isAllowed(settings.allowVerified, status)
 
         DecisionLog(this).add(
             Decision(
@@ -44,3 +44,7 @@ class VerifiedCallScreeningService : CallScreeningService() {
         respondToCall(callDetails, response.build())
     }
 }
+
+/** Only a carrier-verified number can pass, and only if the user allows verified callers. */
+internal fun isAllowed(allowVerified: Boolean, verificationStatus: Int): Boolean =
+    allowVerified && verificationStatus == Connection.VERIFICATION_STATUS_PASSED
